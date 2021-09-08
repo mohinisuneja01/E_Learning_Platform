@@ -1,6 +1,7 @@
-package com.example.elearningportal.DAOs;
+package com.example.elearningportal.DTOs;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "COURSE")
@@ -17,6 +18,12 @@ public class Course {
     private String course_desc;
     @Column(name = "COURSE_FEE")
     private String course_fee;
+    @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
+    private List<Enrollment> enrollments;
+
+    public Course(int courseId) {
+        this.courseId = courseId;
+    }
 
     public Course() {
     }
@@ -26,6 +33,14 @@ public class Course {
         this.course_resource = course_resource;
         this.course_desc = course_desc;
         this.course_fee = course_fee;
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourse_name() {

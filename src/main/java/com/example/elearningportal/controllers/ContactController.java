@@ -1,11 +1,13 @@
 package com.example.elearningportal.controllers;
 
-import com.example.elearningportal.DAOs.Contact;
-import com.example.elearningportal.DAOs.requests.CreateContactRequest;
+import com.example.elearningportal.DTOs.Contact;
+import com.example.elearningportal.DTOs.User;
+import com.example.elearningportal.DTOs.requests.CreateContactRequest;
 import com.example.elearningportal.services.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,8 @@ public class ContactController {
     ContactService contactServices;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getUserRegistration(){
+    public String getUserRegistration(@AuthenticationPrincipal User user,ModelMap modelMap)
+    {   modelMap.addAttribute("userId",user.getUserId());
         return "contact-add";
     }
     @RequestMapping(method=RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)

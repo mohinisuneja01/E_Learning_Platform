@@ -1,7 +1,6 @@
-package com.example.elearningportal.repository;
+package com.example.elearningportal.DAOs;
 
-import com.example.elearningportal.DAOs.Contact;
-import com.example.elearningportal.DAOs.User;
+import com.example.elearningportal.DTOs.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

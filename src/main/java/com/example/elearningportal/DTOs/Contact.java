@@ -1,7 +1,6 @@
-package com.example.elearningportal.DAOs;
+package com.example.elearningportal.DTOs;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @Entity
 @Table(name = "CONTACT")

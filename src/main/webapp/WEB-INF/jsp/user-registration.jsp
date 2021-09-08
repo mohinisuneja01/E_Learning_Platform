@@ -35,6 +35,11 @@
                 <p style="font-style: oblique;">Upload Photo <input type="file" id="image-input" name="uploadPhoto" accept=".png" onchange="readURL(this);">
                 </p>
                 <input type = "submit">
+                <br>
+                <p>
+                Already Registered?
+                <a href="/login">click here to login</a>
+                </p>
             </div>
             <div class="col-md-2">
 

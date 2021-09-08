@@ -15,7 +15,7 @@
             <div class="col-md-8 text-center" style="border: 2px solid black; margin-top: 10px; border-radius: 10px;">
                 <h1>Contact Form</h1>
                 <p style="font-style: oblique;"> User ID
-                    <input name="userId" id="form" placeholder="User ID" type="text">
+                    <input name="userId" id="form" placeholder="User ID" type="text" value="${userId}" readonly>
                 </p>
                 <p style="font-style: oblique;">Name
                     <input name="name" id="form" placeholder="Name" type="text">

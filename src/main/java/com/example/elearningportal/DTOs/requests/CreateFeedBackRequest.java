@@ -1,6 +1,4 @@
-package com.example.elearningportal.DAOs.requests;
-
-import com.example.elearningportal.DAOs.User;
+package com.example.elearningportal.DTOs.requests;
 
 public class CreateFeedBackRequest {
     private String name;

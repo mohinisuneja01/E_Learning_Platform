@@ -1,12 +1,18 @@
-package com.example.elearningportal.DAOs;
+package com.example.elearningportal.DTOs;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
 @Table(name = "USERS")
-public class User {
+public class User implements UserDetails {
     @Id
     @Column(name = "USER_ID")
     private int userId;
@@ -28,6 +34,8 @@ public class User {
     private List<Contact> contact;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Feedback> feedbacks;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Enrollment> enrollments;
     public User() {
     }
 
@@ -101,12 +109,66 @@ public class User {
         this.email = email;
     }
 
+    public List<Contact> getContact() {
+        return contact;
+    }
+
+    public void setContact(List<Contact> contact) {
+        this.contact = contact;
+    }
+
+    public List<Feedback> getFeedbacks() {
+        return feedbacks;
+    }
+
+    public void setFeedbacks(List<Feedback> feedbacks) {
+        this.feedbacks = feedbacks;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(new SimpleGrantedAuthority("user"));
+    }
+
     public String getPassword() {
         return password;
     }
 
+    @Override
+    public String getUsername() {
+        return String.valueOf(userId);
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Enrollment> getEnrollments() {
+        return enrollments;
+    }
+
+    public void setEnrollments(List<Enrollment> enrollments) {
+        this.enrollments = enrollments;
     }
 
     @Override

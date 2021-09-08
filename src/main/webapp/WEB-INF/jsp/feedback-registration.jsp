@@ -19,7 +19,7 @@
                     <input name="name" id="form" placeholder="Name" type="text">
                 </p>
                 <p style="font-style: oblique;"> User ID
-                                    <input name="userId" id="form" placeholder="User ID" type="text">
+                                    <input name="userId" id="form" placeholder="User ID" type="text" value="${userId}" readonly>
                                 </p>
                 <p style="font-style: oblique;">Email
                     <input name="email" id="form" placeholder="Email" type="email">

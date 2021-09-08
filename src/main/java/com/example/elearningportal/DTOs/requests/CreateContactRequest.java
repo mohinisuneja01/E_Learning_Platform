@@ -1,10 +1,4 @@
-package com.example.elearningportal.DAOs.requests;
-
-import com.example.elearningportal.DAOs.User;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+package com.example.elearningportal.DTOs.requests;
 
 public class CreateContactRequest {
     private String userId;

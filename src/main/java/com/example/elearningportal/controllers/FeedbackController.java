@@ -1,14 +1,15 @@
 package com.example.elearningportal.controllers;
 
-import com.example.elearningportal.DAOs.Feedback;
-import com.example.elearningportal.DAOs.User;
-import com.example.elearningportal.DAOs.requests.CreateFeedBackRequest;
+import com.example.elearningportal.DTOs.Feedback;
+import com.example.elearningportal.DTOs.User;
+import com.example.elearningportal.DTOs.requests.CreateFeedBackRequest;
 import com.example.elearningportal.services.FeedbackService;
-import com.example.elearningportal.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,7 +20,8 @@ public class FeedbackController {
     FeedbackService feedbackService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getFeeback(){
+    public String getFeeback(@AuthenticationPrincipal User user, ModelMap modelMap){
+        modelMap.addAttribute("userId",user.getUserId());
         return "feedback-registration";
     }
     @RequestMapping(method=RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
